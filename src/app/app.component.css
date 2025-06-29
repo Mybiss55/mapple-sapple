@@ -1,0 +1,44 @@
+.about-container {
+  max-width: 600px;
+  margin: 60px auto;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 24px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 8px 0;
+}
+
+a {
+  text-decoration: none;
+  color: #0077cc;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#skills-list {
+  margin-top: 16px;
+display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+    gap: 16px;
+    list-style: none;
+    font-weight: bold;
+}
