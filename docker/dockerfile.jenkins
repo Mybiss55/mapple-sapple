@@ -1,0 +1,13 @@
+FROM node:22
+
+RUN mkdir -p /the/workdir/path
+
+WORKDIR /the/workdir/path
+
+COPY . .
+
+RUN chown -R node:node /the/workdir/path
+
+USER node
+
+USER node
