@@ -1,0 +1,39 @@
+services:
+  tests:
+    image: node:22
+    container_name: node-container
+    working_dir: /app
+    volumes:
+      - ${WORKSPACE}:/app
+    command: tail -f /dev/null
+    networks:
+      - selenium-net
+  grid:
+    image: selenium/standalone-chrome:4.33.0-20250606
+    ports:
+      - "4444:4444"
+    volumes:
+      - /dev/shm:/dev/shm
+    networks:
+      - selenium-net
+  video:
+    image: selenium/video:ffmpeg-7.1-20250606
+    container_name: video-recorder
+    ports:
+      - "5900:5900"
+    environment:
+      - VIDEO_NAME=video.mp4
+      - VIDEO_CODEC=libx264
+      - VIDEO_BITRATE=1000k
+      - VIDEO_FRAMERATE=30
+    depends_on:
+      - grid
+    volumes:
+      - /dev/shm:/dev/shm
+      - ${WORKSPACE}/videos:/videos
+    networks:
+      - selenium-net
+
+networks:
+  selenium-net:
+    driver: bridge
